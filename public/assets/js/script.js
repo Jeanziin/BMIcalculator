@@ -1,20 +1,24 @@
-// Variables
-const form = document.querySelector('form');
-const inputWeight = document.querySelector('#weight');
-const inputHeight = document.querySelector('#height');
-const modalWrapper = document.querySelector('.modal-wrapper');
-const modalMessage = document.querySelector('.modal .title span');
-const modalBtnClose = document.querySelector('.modal button.close');
-const alertError = document.querySelector('.alert-error');
+//Modal object
+const Modal = {
+  form: document.querySelector('form'),
+  inputWeight: document.querySelector('#weight'),
+  inputHeight: document.querySelector('#height'),
+  wrapper: document.querySelector('.modal-wrapper'),
+  message: document.querySelector('.modal .title span'),
+  btnClose: document.querySelector('.modal button.close'),
+  alertError: document.querySelector('.alert-error'),
 
+  open() { Modal.wrapper.classList.add('open') },
+  close() { Modal.wrapper.classList.remove('open') }
+}
 // Event Listener for the form
-form.addEventListener('submit', handleSubmit);
+Modal.form.addEventListener('submit', handleSubmit);
 
 // Function to handle form submission
 function handleSubmit(event) {
   event.preventDefault();
-  const weight = parseFloat(inputWeight.value);
-  const height = parseFloat(inputHeight.value);
+  const weight = parseFloat(Modal.inputWeight.value);
+  const height = parseFloat(Modal.inputHeight.value);
 
   if (isNaN(weight) || isNaN(height)) {
     showError();
@@ -27,14 +31,14 @@ function handleSubmit(event) {
 
 // Function to display the BMI result
 function showModal(message) {
-  modalMessage.innerText = message;
-  modalWrapper.classList.add('open');
-  alertError.classList.remove('open');
+  Modal.message.innerText = message;
+  Modal.open();
+  Modal.alertError.classList.remove('open');
 }
 
 // Event Listener to close the modal
-modalBtnClose.addEventListener('click', () => {
-  modalWrapper.classList.remove('open');
+Modal.btnClose.addEventListener('click', () => {
+  Modal.close();
 });
 
 // Function to calculate the BMI
@@ -43,6 +47,6 @@ function calculateBMI(weight, height) {
 }
 
 function showError() {
-  alertError.classList.add('open');
-  modalMessage.classList.remove('open');
+  Modal.alertError.classList.add('open');
+  Modal.message.classList.remove('open');
 }
