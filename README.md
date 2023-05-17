@@ -28,5 +28,5 @@
 ![error](https://github.com/Jeanziin/BMIcalculator/assets/99040775/aa592a4b-034a-4aab-990e-91648f0bc0e9)
 
   
-##Demo
+## Demo
 > A live demo of the BMI calculator can be [accessed here](https://luminous-parfait-01e56e.netlify.app).
