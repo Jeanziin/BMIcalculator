@@ -1,8 +1,13 @@
+//Input Object
+const Input = {
+  inputWeight: document.querySelector('#weight'),
+  inputHeight: document.querySelector('#height'),
+}
+
+
 //Modal object
 const Modal = {
   form: document.querySelector('form'),
-  inputWeight: document.querySelector('#weight'),
-  inputHeight: document.querySelector('#height'),
   wrapper: document.querySelector('.modal-wrapper'),
   message: document.querySelector('.modal .title span'),
   btnClose: document.querySelector('.modal button.close'),
@@ -17,8 +22,8 @@ Modal.form.addEventListener('submit', handleSubmit);
 // Function to handle form submission
 function handleSubmit(event) {
   event.preventDefault();
-  const weight = parseFloat(Modal.inputWeight.value);
-  const height = parseFloat(Modal.inputHeight.value);
+  const weight = parseFloat(Input.inputWeight.value);
+  const height = parseFloat(Input.inputHeight.value);
 
   if (isNaN(weight) || isNaN(height)) {
     showError();
